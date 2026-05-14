@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, viewport-fit=cover">
+    <title>Инфляция.Бизнес | Антиинфляционный навигатор</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #f5f7fb;
+            color: #1a2c3e;
+            line-height: 1.5;
+            padding-bottom: 20px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 16px;
+        }
+
+        @media (min-width: 768px) {
+            .container {
+                padding: 0 24px;
+            }
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, #0b2b3b 0%, #134b5e 100%);
+            color: white;
+            padding: 16px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+        }
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+        .logo h1 {
+            font-size: 1.4rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+        }
+        @media (min-width: 768px) {
+            .logo h1 {
+                font-size: 1.8rem;
+            }
+        }
+        .logo span {
+            color: #6ee7ff;
+        }
+        .badge {
+            background: rgba(255,255,255,0.2);
+            padding: 6px 12px;
+            border-radius: 40px;
+            font-size: 0.7rem;
+            font-weight: 500;
+        }
+        @media (min-width: 768px) {
+            .badge {
+                font-size: 0.85rem;
+                padding: 8px 16px;
+            }
+        }
+
+        /* Stats Dashboard */
+        .stats-bar {
+            background: white;
+            border-radius: 24px;
+            padding: 16px 20px;
+            margin: 20px 0;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 16px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.05);
+            border: 1px solid #e2e8f0;
+        }
+        .stat-card {
+            flex: 1;
+            min-width: 100px;
+            text-align: center;
+        }
+        .stat-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            font-weight: 600;
+            color: #5a6e7c;
+            letter-spacing: 0.5px;
+        }
+        @media (min-width: 768px) {
+            .stat-label {
+                font-size: 0.85rem;
+            }
+        }
+        .stat-value {
+            font-size: 1.3rem;
+            font-weight: 800;
+            color: #0b2b3b;
+            margin-top: 4px;
+        }
+        @media (min-width: 768px) {
+            .stat-value {
+                font-size: 2rem;
+                margin-top: 8px;
+            }
+        }
+        .stat-trend {
+            font-size: 0.6rem;
+            color: #2c7a4d;
+        }
+
+        /* Sections */
+        .section {
+            margin: 32px 0;
+        }
+        .section-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            border-left: 5px solid #2c7da0;
+            padding-left: 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        @media (min-width: 768px) {
+            .section-title {
+                font-size: 1.8rem;
+                margin-bottom: 28px;
+                padding-left: 20px;
+            }
+        }
+        .grid-2cols {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 24px;
+        }
+        @media (min-width: 768px) {
+            .grid-2cols {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 32px;
+            }
+        }
+        .calculator-card {
+            background: white;
+            border-radius: 28px;
+            padding: 20px;
+            box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+            border: 1px solid #eef2f8;
+        }
+        @media (min-width: 768px) {
+            .calculator-card {
+                padding: 28px;
+            }
+        }
+        .calculator-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 16px;
+            color: #1e4a6e;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        @media (min-width: 768px) {
+            .calculator-card h3 {
+                font-size: 1.4rem;
+                margin-bottom: 20px;
+            }
+        }
+        .form-group {
+            margin-bottom: 14px;
+        }
+        @media (min-width: 768px) {
+            .form-group {
+                margin-bottom: 18px;
+            }
+        }
+        label {
+            font-weight: 600;
+            display: block;
+            margin-bottom: 6px;
+            color: #2c3e50;
+            font-size: 0.85rem;
+        }
+        @media (min-width: 768px) {
+            label {
+                font-size: 1rem;
+                margin-bottom: 8px;
+            }
+        }
+        input, select {
+            width: 100%;
+            padding: 10px 14px;
+            border: 2px solid #e2e8f0;
+            border-radius: 14px;
+            font-size: 0.95rem;
+            font-family: inherit;
+            transition: 0.2s;
+            background: white;
+        }
+        @media (min-width: 768px) {
+            input, select {
+                padding: 12px 16px;
+                font-size: 1rem;
+                border-radius: 16px;
+            }
+        }
+        input:focus {
+            border-color: #2c7da0;
+            outline: none;
+        }
+        .btn {
+            display: inline-block;
+            background: #2c7da0;
+            color: white;
+            padding: 12px 20px;
+            border-radius: 40px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 8px;
+            transition: 0.2s;
+            border: none;
+            cursor: pointer;
+            font-size: 0.95rem;
+            width: 100%;
+            text-align: center;
+        }
+        @media (min-width: 768px) {
+            .btn {
+                padding: 12px 28px;
+                font-size: 1rem;
+                margin-top: 12px;
+            }
+        }
+        .btn:hover {
+            background: #1e5a78;
+            transform: translateY(-2px);
+        }
+        .btn:active {
+            transform: translateY(0);
+        }
+        .result-block {
+            background: #f0f6fa;
+            border-radius: 20px;
+            padding: 16px;
+            margin-top: 20px;
+        }
+        @media (min-width: 768px) {
+            .result-block {
+                padding: 20px;
+                margin-top: 24px;
+                border-radius: 24px;
+            }
+        }
+        .result-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid #d4e2ec;
+            font-weight: 500;
+            font-size: 0.85rem;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        @media (min-width: 768px) {
+            .result-item {
+                padding: 12px 0;
+                font-size: 1rem;
+            }
+        }
+        .result-item:last-child {
+            border-bottom: none;
+        }
+        .highlight {
+            color: #1e6f3f;
+            font-weight: 800;
+            font-size: 0.95rem;
+        }
+        @media (min-width: 768px) {
+            .highlight {
+                font-size: 1.1rem;
+            }
+        }
+        .warning-text {
+            color: #c44536;
+            font-weight: 600;
+        }
+
+        /* Советы предпринимателям */
+        .tips-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 16px;
+            margin-top: 16px;
+        }
+        @media (min-width: 640px) {
+            .tips-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        @media (min-width: 1024px) {
+            .tips-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+        .tip-card {
+            background: white;
+            border-radius: 24px;
+            padding: 18px;
+            transition: 0.2s;
+            border-left: 6px solid #2c7da0;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+        @media (min-width: 768px) {
+            .tip-card {
+                padding: 24px;
+            }
+        }
+        .tip-icon {
+            font-size: 1.8rem;
+            margin-bottom: 12px;
+        }
+        .tip-card h4 {
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+            color: #0b2b3b;
+        }
+        @media (min-width: 768px) {
+            .tip-card h4 {
+                font-size: 1.25rem;
+                margin-bottom: 12px;
+            }
+        }
+        .tip-card p {
+            color: #4a5b6b;
+            line-height: 1.4;
+            font-size: 0.85rem;
+        }
+        @media (min-width: 768px) {
+            .tip-card p {
+                font-size: 0.95rem;
+            }
+        }
+        .badge-tip {
+            display: inline-block;
+            background: #eef2fa;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.65rem;
+            margin-top: 10px;
+        }
+
+        .footer {
+            background: #0b2b3b;
+            color: #b9d8f0;
+            padding: 32px 0;
+            margin-top: 40px;
+            text-align: center;
+            font-size: 0.8rem;
+        }
+        @media (min-width: 768px) {
+            .footer {
+                padding: 40px 0;
+                margin-top: 56px;
+            }
+        }
+        
+        .checklist-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 10px;
+            margin-top: 16px;
+        }
+        @media (min-width: 640px) {
+            .checklist-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        @media (min-width: 1024px) {
+            .checklist-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+        .checklist-item {
+            padding: 8px 0;
+            font-size: 0.85rem;
+        }
+        @media (min-width: 768px) {
+            .checklist-item {
+                font-size: 0.95rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header class="header">
+    <div class="container header-inner">
+        <div class="logo">
+            <h1>Инфляция.<span>Бизнес</span></h1>
+            <div style="font-size: 0.7rem; opacity: 0.9;">Антиинфляционный навигатор</div>
+        </div>
+        <div class="badge">
+            <i class="fas fa-chart-line"></i> Данные ЦБ
+        </div>
+    </div>
+</header>
+
+<main class="container">
+    <!-- Инфляционный барометр -->
+    <div class="stats-bar" id="dashboard">
+        <div class="stat-card">
+            <div class="stat-label"><i class="fas fa-percent"></i> Инфляция</div>
+            <div class="stat-value" id="inflationValue">-- %</div>
+            <div class="stat-trend">годовая</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-label"><i class="fas fa-university"></i> Ключ. ставка</div>
+            <div class="stat-value" id="keyRateValue">-- %</div>
+            <div class="stat-trend">ЦБ РФ</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-label"><i class="fas fa-dollar-sign"></i> USD/RUB</div>
+            <div class="stat-value" id="usdValue">-- ₽</div>
+            <div class="stat-trend">офиц.</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-label"><i class="fas fa-euro-sign"></i> EUR/RUB</div>
+            <div class="stat-value" id="eurValue">-- ₽</div>
+            <div class="stat-trend">офиц.</div>
+        </div>
+    </div>
+
+    <!-- ДВА ОСНОВНЫХ КАЛЬКУЛЯТОРА -->
+    <div class="grid-2cols">
+        <!-- Калькулятор 1: Реальная прибыль -->
+        <div class="calculator-card">
+            <h3><i class="fas fa-chart-line"></i> Реальная прибыль с учетом инфляции</h3>
+            <div class="form-group">
+                <label>Выручка за месяц (₽)</label>
+                <input type="number" id="monthlyRevenue" value="2000000" step="100000">
+            </div>
+            <div class="form-group">
+                <label>Себестоимость / издержки в месяц (₽)</label>
+                <input type="number" id="monthlyCosts" value="1200000" step="50000">
+            </div>
+            <div class="form-group">
+                <label>Средняя отсрочка платежа (дней)</label>
+                <input type="number" id="profitDeferral" value="30">
+            </div>
+            <div class="form-group">
+                <label>Прогнозный период</label>
+                <select id="profitPeriod">
+                    <option value="3">3 месяца</option>
+                    <option value="6" selected>6 месяцев</option>
+                    <option value="12">12 месяцев</option>
+                </select>
+            </div>
+            <div class="result-block" id="realProfitResult">
+                <div class="result-item"><strong>📊 Номинальная прибыль:</strong> <span id="nominalProfit">--</span></div>
+                <div class="result-item"><strong>📉 Потери от инфляции:</strong> <span id="inflationLoss">--</span></div>
+                <div class="result-item"><strong>💰 РЕАЛЬНАЯ ПРИБЫЛЬ:</strong> <span id="realProfitValue" class="highlight">--</span></div>
+                <div class="result-item"><strong>⚠️ Потерянная доля:</strong> <span id="lostShare">--</span></div>
+            </div>
+        </div>
+
+        <!-- Калькулятор 2: Будущая цена товара -->
+        <div class="calculator-card">
+            <h3><i class="fas fa-tags"></i> Расчет будущей цены товара</h3>
+            <div class="form-group">
+                <label>Текущая цена товара (₽)</label>
+                <input type="number" id="currentPrice" value="1000" step="100">
+            </div>
+            <div class="form-group">
+                <label>Текущая себестоимость (₽)</label>
+                <input type="number" id="currentUnitCost" value="600" step="50">
+            </div>
+            <div class="form-group">
+                <label>Желаемая маржинальность (%)</label>
+                <input type="number" id="targetMargin" value="30" step="5">
+            </div>
+            <div class="form-group">
+                <label>Прогноз роста себестоимости (%)</label>
+                <input type="number" id="costGrowth" value="15" step="5">
+                <small style="color:#6c7a89;">*С учетом инфляции</small>
+            </div>
+            <div class="result-block" id="futurePriceResult">
+                <div class="result-item"><strong>📈 Будущая себестоимость:</strong> <span id="futureCost">--</span></div>
+                <div class="result-item"><strong>🏷️ Реком. цена:</strong> <span id="futurePrice" class="highlight">--</span></div>
+                <div class="result-item"><strong>📊 Новая маржинальность:</strong> <span id="newMarginCalc">--</span></div>
+                <div class="result-item"><strong>⚡ Рост цены:</strong> <span id="priceIncreasePercent">--</span></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Комплексный анализ -->
+    <div class="section">
+        <div class="section-title"><i class="fas fa-chart-pie"></i> Комплексный анализ влияния инфляции</div>
+        <div class="calculator-card">
+            <div style="display: grid; grid-template-columns: 1fr; gap: 16px;">
+                <div>
+                    <div class="form-group">
+                        <label>Доля импортного сырья (%)</label>
+                        <input type="number" id="importShare" value="35">
+                    </div>
+                    <div class="form-group">
+                        <label>Кредитная нагрузка (₽)</label>
+                        <input type="number" id="loanAmountComplex" value="5000000">
+                    </div>
+                </div>
+                <div>
+                    <div class="form-group">
+                        <label>Средняя отсрочка дебиторам (дней)</label>
+                        <input type="number" id="deferralComplex" value="45">
+                    </div>
+                    <div class="form-group">
+                        <label>ФОТ в месяц (₽)</label>
+                        <input type="number" id="salaryComplex" value="800000">
+                    </div>
+                </div>
+            </div>
+            <div class="result-block" id="complexResult">
+                <div class="result-item"><strong>📈 Рост себестоимости (6 мес):</strong> <span id="complexCostGrowth">--</span></div>
+                <div class="result-item"><strong>🏦 Потери на дебиторке:</strong> <span id="complexReceivablesLoss">--</span></div>
+                <div class="result-item"><strong>💸 Кредитная нагрузка:</strong> <span id="complexCreditLoad">--</span></div>
+                <div class="result-item"><strong>📉 Снижение реальной прибыли:</strong> <span id="complexProfitDrop">--</span></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- СОВЕТЫ ПРЕДПРИНИМАТЕЛЯМ -->
+    <div class="section">
+        <div class="section-title"><i class="fas fa-lightbulb"></i> 7 стратегий защиты бизнеса от инфляции</div>
+        <div class="tips-grid">
+            <div class="tip-card"><div class="tip-icon"><i class="fas fa-file-contract"></i></div><h4>Валютные оговорки</h4><p>Включайте в договоры пересмотр цены при росте курса >5%</p><div class="badge-tip">Защита маржи</div></div>
+            <div class="tip-card"><div class="tip-icon"><i class="fas fa-clock"></i></div><h4>Сокращение дебиторки</h4><p>Переходите на предоплату, сокращайте отсрочки до 7-14 дней</p><div class="badge-tip">Деньги сегодня</div></div>
+            <div class="tip-card"><div class="tip-icon"><i class="fas fa-boxes"></i></div><h4>Страховые запасы</h4><p>Увеличьте запасы сырья на 60-90 дней для фиксации цен</p><div class="badge-tip">Хеджирование</div></div>
+            <div class="tip-card"><div class="tip-icon"><i class="fas fa-hand-holding-usd"></i></div><h4>Импортозамещение</h4><p>Ищите локальных поставщиков, снижайте валютные риски</p><div class="badge-tip">Локализация</div></div>
+            <div class="tip-card"><div class="tip-icon"><i class="fas fa-chart-line"></i></div><h4>Динамическое ценообразование</h4><p>Пересматривайте цены ежемесячно, привязывайте к инфляции</p><div class="badge-tip">Адаптивные цены</div></div>
+            <div class="tip-card"><div class="tip-icon"><i class="fas fa-chart-pie"></i></div><h4>Управление деньгами</h4><p>Не держите крупные остатки на рублевых счетах</p><div class="badge-tip">Сохранение капитала</div></div>
+            <div class="tip-card"><div class="tip-icon"><i class="fas fa-chart-simple"></i></div><h4>Оптимизация издержек</h4><p>Автоматизируйте процессы, пересматривайте аренду</p><div class="badge-tip">Эффективность</div></div>
+        </div>
+    </div>
+
+    <!-- Чек-лист -->
+    <div class="section">
+        <div class="calculator-card" style="background: linear-gradient(135deg, #eef5fa, white);">
+            <h3><i class="fas fa-check-circle"></i> Антиинфляционный чек-лист</h3>
+            <div class="checklist-grid">
+                <div class="checklist-item">✅ Пересмотр цен раз в 1-2 месяца</div>
+                <div class="checklist-item">✅ Валютные оговорки в договорах</div>
+                <div class="checklist-item">✅ Увеличение складских запасов на 30-50%</div>
+                <div class="checklist-item">✅ Сокращение отсрочек до 10-14 дней</div>
+                <div class="checklist-item">✅ Рефинансирование кредитов</div>
+                <div class="checklist-item">✅ Поиск локальных поставщиков</div>
+                <div class="checklist-item">✅ Инвестиции с окупаемостью < 12 мес</div>
+                <div class="checklist-item">✅ Привязка премий к KPI</div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<footer class="footer">
+    <div class="container">
+        <p><i class="fas fa-chart-line"></i> Инфляция.Бизнес — инструмент для оценки рисков и защиты бизнеса</p>
+        <p style="font-size: 0.7rem; margin-top: 8px;">Данные обновляются автоматически. Работает на всех устройствах.</p>
+    </div>
+</footer>
+
+<script>
+    // Глобальные переменные для макроданных
+    let cachedMacro = { inflation: 7.9, keyRate: 16.0, usd: 92.5, eur: 99.8 };
+    
+    // Получение макроданных с fallback
+    async function fetchMacroData() {
+        try {
+            // Курсы валют
+            const currencyUrl = 'https://www.cbr-xml-daily.ru/daily_json.js';
+            const currencyRes = await fetch(currencyUrl);
+            if (currencyRes.ok) {
+                const currencyData = await currencyRes.json();
+                cachedMacro.usd = currencyData.Valute.USD.Value;
+                cachedMacro.eur = currencyData.Valute.EUR.Value;
+            }
+            document.getElementById('usdValue').innerText = cachedMacro.usd.toFixed(2) + ' ₽';
+            document.getElementById('eurValue').innerText = cachedMacro.eur.toFixed(2) + ' ₽';
+        } catch(e) {
+            console.log('Курсы: используем резервные значения');
+            document.getElementById('usdValue').innerText = cachedMacro.usd.toFixed(2) + ' ₽';
+            document.getElementById('eurValue').innerText = cachedMacro.eur.toFixed(2) + ' ₽';
+        }
+        
+        try {
+            // Инфляция через альтернативный источник
+            const infApi = await fetch('https://api.inflatio.com/v1/inflation/ru');
+            if(infApi.ok) {
+                const infJson = await infApi.json();
+                if(infJson && infJson.rate) cachedMacro.inflation = infJson.rate;
+            }
+        } catch(e) {}
+        
+        try {
+            // Ключевая ставка
+            const rateResp = await fetch('https://api.bmrf.gov.ru/v1/keyrate?format=json');
+            if(rateResp.ok) {
+                const krData = await rateResp.json();
+                if(krData && krData.rate) cachedMacro.keyRate = krData.rate;
+            }
+        } catch(e) {}
+        
+        document.getElementById('inflationValue').innerHTML = cachedMacro.inflation.toFixed(1) + ' %';
+        document.getElementById('keyRateValue').innerText = cachedMacro.keyRate + ' %';
+        
+        return cachedMacro;
+    }
+
+    // 1. Расчет реальной прибыли
+    async function calcRealProfit() {
+        const macro = await fetchMacroData();
+        const revenue = parseFloat(document.getElementById('monthlyRevenue').value) || 0;
+        const costs = parseFloat(document.getElementById('monthlyCosts').value) || 0;
+        const deferral = parseFloat(document.getElementById('profitDeferral').value) || 0;
+        const months = parseInt(document.getElementById('profitPeriod').value) || 6;
+        
+        const nominalProfitTotal = (revenue - costs) * months;
+        const monthlyInf = Math.pow(1 + macro.inflation/100, 1/12) - 1;
+        const inflationLossTotal = (revenue * months) * (deferral/365) * (macro.inflation/100) + (revenue * months) * (monthlyInf * months/2);
+        const realProfit = nominalProfitTotal - inflationLossTotal;
+        const lostShare = nominalProfitTotal > 0 ? (inflationLossTotal / nominalProfitTotal * 100).toFixed(1) : '100';
+        
+        document.getElementById('nominalProfit').innerHTML = Math.round(nominalProfitTotal).toLocaleString() + ' ₽';
+        document.getElementById('inflationLoss').innerHTML = Math.round(inflationLossTotal).toLocaleString() + ' ₽';
+        document.getElementById('realProfitValue').innerHTML = Math.round(realProfit).toLocaleString() + ' ₽';
+        document.getElementById('lostShare').innerHTML = lostShare + ' %';
+    }
+
+    // 2. Расчет будущей цены товара
+    async function calcFuturePrice() {
+        const macro = await fetchMacroData();
+        const currentPrice = parseFloat(document.getElementById('currentPrice').value) || 0;
+        const currentCost = parseFloat(document.getElementById('currentUnitCost').value) || 0;
+        const targetMargin = parseFloat(document.getElementById('targetMargin').value) || 30;
+        let costGrowth = parseFloat(document.getElementById('costGrowth').value) || macro.inflation;
+        
+        const futureCost = currentCost * (1 + costGrowth/100);
+        const requiredPrice = targetMargin > 0 ? futureCost / (1 - targetMargin/100) : futureCost;
+        const newMarginActual = (requiredPrice - futureCost) / requiredPrice * 100;
+        const priceIncreasePercent = currentPrice > 0 ? ((requiredPrice - currentPrice) / currentPrice * 100).toFixed(1) : '0';
+        
+        document.getElementById('futureCost').innerHTML = Math.round(futureCost).toLocaleString() + ' ₽';
+        document.getElementById('futurePrice').innerHTML = Math.round(requiredPrice).toLocaleString() + ' ₽';
+        document.getElementById('newMarginCalc').innerHTML = newMarginActual.toFixed(1) + ' %';
+        document.getElementById('priceIncreasePercent').innerHTML = priceIncreasePercent + ' %';
+    }
+
+    // 3. Комплексный анализ
+    async function complexAnalysis() {
+        const macro = await fetchMacroData();
+        const importShare = parseFloat(document.getElementById('importShare').value) || 0;
+        const loanAmount = parseFloat(document.getElementById('loanAmountComplex').value) || 0;
+        const deferralDays = parseFloat(document.getElementById('deferralComplex').value) || 0;
+        const salary = parseFloat(document.getElementById('salaryComplex').value) || 0;
+        
+        const months = 6;
+        const costGrowthImpact = (importShare/100) * (macro.inflation/100) * months * 0.8 * 100;
+        const avgRevenueForLoss = 5000000;
+        const receivablesLoss = (deferralDays/365) * (macro.inflation/100) * avgRevenueForLoss;
+        const creditLoad = loanAmount * (macro.keyRate/100) * (months/12);
+        
+        document.getElementById('complexCostGrowth').innerHTML = costGrowthImpact.toFixed(1) + ' %';
+        document.getElementById('complexReceivablesLoss').innerHTML = Math.round(receivablesLoss).toLocaleString() + ' ₽';
+        document.getElementById('complexCreditLoad').innerHTML = Math.round(creditLoad).toLocaleString() + ' ₽';
+        document.getElementById('complexProfitDrop').innerHTML = Math.round((costGrowthImpact * 1000) + (receivablesLoss/100) + (creditLoad/100)).toLocaleString() + ' ₽';
+    }
+
+    // Общая функция обновления всех расчетов
+    async function updateAllCalculations() {
+        await fetchMacroData();
+        await calcRealProfit();
+        await calcFuturePrice();
+        await complexAnalysis();
+    }
+
+    // Назначение обработчиков для всех полей ввода (работает на телефонах)
+    function bindInputEvents() {
+        const inputs = document.querySelectorAll('input, select');
+        inputs.forEach(input => {
+            input.addEventListener('input', () => {
+                updateAllCalculations();
+            });
+            input.addEventListener('change', () => {
+                updateAllCalculations();
+            });
+        });
+    }
+
+    // Запуск при загрузке
+    window.addEventListener('DOMContentLoaded', async () => {
+        await updateAllCalculations();
+        bindInputEvents();
+    });
+    
+    // Дополнительно для мобильных: обрабатываем touch
+    document.addEventListener('touchstart', function() {}, { passive: true });
+</script>
+</body>
+</html>
